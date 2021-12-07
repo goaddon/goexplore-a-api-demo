@@ -1,0 +1,39 @@
+{
+  "en": {
+    "title": "API Demo",
+    "headline": "Welcome",
+    "explainer": {
+      "p1": "This is a demo API. The goal is to demonstrate how to setup a RESTful JSON API. The API handles both requests with and without an authorization header.",
+      "p2": "The requests you make from the interface below are not authorized. You can try out making requests that contains an authorization header through the",
+      "p3": "webhook demo",
+      "p4": "another demo projects of ours.",
+      "p5": "This demo is based on the",
+      "p6": "goexplore-a-api-demo",
+      "p7": "repository."
+    },
+    "headlines": {
+      "index": "1. Check tasks",
+      "create": "2. Create a task",
+      "show": "3. Check the task",
+      "update": "4. Update the task",
+      "destroy": "5. Destroy the task",
+      "refresh": "6. Refresh the page"
+    },
+    "explainers": {
+      "index": "Verify that no tasks exists:",
+      "create": "Create a task with a name of your choosing:",
+      "show": "Check the created task:",
+      "update": "Update the name of the task:",
+      "destroy": "Destroy the task:",
+      "refresh": "Refresh your browser tab to try again."
+    },
+    "placeholders": {
+      "create_name": "Enter task name...",
+      "update_name": "Enter task name..."
+    },
+    "buttons": {
+      "create": "Create",
+      "update": "Update"
+    }
+  }
+}

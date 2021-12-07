@@ -1,0 +1,22 @@
+{% include "shared/get_company_id" %}
+
+{% if company_id == nil %}
+
+  {"status": "500", "message": "{{ l.no_company_id }}"}
+
+{% else %}
+
+  {% assign tasks_query     = "tasks" | db_find: company_id: company_id %}
+  {% assign tasks           = tasks_query.results %}
+
+  {
+    "status": "200",
+    "tasks": [
+      {% for task in tasks %}
+        {% include "tasks/task" %}
+        {% if task != tasks.last %},{% endif %}
+      {% endfor %}
+    ]
+  }
+
+{% endif %}

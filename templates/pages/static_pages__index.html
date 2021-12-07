@@ -1,0 +1,75 @@
+<h1 class="display-4">{{ l.headline }}</h1>
+<p>
+  {{ l.explainer.p1 }}
+</p>
+<p>
+  {{ l.explainer.p2 }} <a href="https://goexplore-webhook-demo.goaddon.com" target="_blank">{{ l.explainer.p3 }} <i class="fas fa-external-link-alt"></i></a>, {{ l.explainer.p4 }}
+</p>
+<p>
+  {{ l.explainer.p5 }} <a href="https://github.com/goaddon/goexplore-a-api-demo" target="_blank">{{ l.explainer.p6 }} <i class="fas fa-external-link-alt"></i></a> {{ l.explainer.p7 }}
+</p>
+
+{% assign company_id  = "" | new_object_id %}
+{% assign task_id     = "" | new_object_id %}
+
+<h5 class="mt-5">{{ l.headlines.index }}</h5>
+<p>{{ l.explainers.index }}</p>
+
+{% capture index %}/tasks.json?company_id={{ company_id }}{% endcapture %}
+<p>
+  <a href="{{ 'tasks__index' | path_for: format: 'json', company_id: company_id }}" target="_blank">GET {{ index }} <i class="fas fa-external-link-alt"></i></a>
+</p>
+
+<h5 class="mt-5">{{ l.headlines.create }}</h5>
+<p>{{ l.explainers.create }}</p>
+
+<form class="mb-3" action="{{ 'tasks__create' | path_for: format: 'json' }}" method="post", target="_blank" data-turbo="false">
+  <div class="input-group">
+    <input type="hidden" name="company_id" value="{{ company_id }}">
+    <input type="hidden" name="_id" value="{{ task_id }}">
+    <input class="form-control" type="text" name="name" placeholder="{{ l.placeholders.create_name }}">
+    <button type="submit" class="btn btn-outline-primary">
+      <i class="fas fa-external-link-alt"></i>
+      {{ l.buttons.create }}
+    </button>
+  </div>
+</form>
+
+<h5 class="mt-5">{{ l.headlines.show }}</h5>
+<p>{{ l.explainers.show }}</p>
+
+{% capture show %}/tasks/{{ task_id }}.json?company_id={{ company_id }}{% endcapture %}
+<p>
+  <a href="{{ 'tasks__show' | path_for: format: 'json', id: task_id, company_id: company_id }}" target="_blank">GET {{ show }} <i class="fas fa-external-link-alt"></i></a>
+</p>
+
+<h5 class="mt-5">{{ l.headlines.update }}</h5>
+<p>{{ l.explainers.update }}</p>
+
+<form class="mb-3" action="{{ 'tasks__update' | path_for: id: task_id, format: 'json' }}" method="post" target="_blank" data-turbo="false">
+  <div class="input-group">
+    <input type="hidden" name="_method" value="patch">
+    <input type="hidden" name="company_id" value="{{ company_id }}">
+    <input class="form-control" type="text" name="name" placeholder="{{ l.placeholders.update_name }}">
+    <button type="submit" class="btn btn-outline-primary">
+      <i class="fas fa-external-link-alt"></i>
+      {{ l.buttons.update }}
+    </button>
+  </div>
+</form>
+
+<h5 class="mt-5">{{ l.headlines.destroy }}</h5>
+<p>{{ l.explainers.destroy }}</p>
+
+{% capture destroy %}/tasks/{{ task_id }}.json?company_id={{ company_id }}{% endcapture %}
+<form action="{{ 'tasks__destroy' | path_for: id: task_id, company_id: company_id, format: 'json' }}" method="post" target="_blank" data-turbo="false">
+  <div class="input-group">
+    <input type="hidden" name="_method" value="delete">
+    <button type="submit" class="bg-body border-0 link-primary p-0">
+      DELETE {{ destroy }} <i class="fas fa-external-link-alt"></i>
+    </button>
+  </div>
+</form>
+
+<h5 class="mt-5">{{ l.headlines.refresh }}</h5>
+<p>{{ l.explainers.refresh }}</p>
