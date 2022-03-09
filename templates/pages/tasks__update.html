@@ -10,7 +10,7 @@
 
 {% else %}
 
-  {% assign tasks_update = "update_task" | db_update_one: company_id: params.company_id, name: params.name, _id: params.id %}
+  {% assign tasks_update = "update_task" | db_update_one: company_id: company_id, name: params.name, _id: params.id %}
 
   {% if tasks_update.matched_count != 1 %}
 
