@@ -12,13 +12,13 @@
 
   {% assign tasks_insertion = "create_task" | db_insert_one: _id: params._id, company_id: company_id, name: params.name %}
 
-  {% if tasks_insertion._id == nil %}
+  {% if tasks_insertion.created_count != 1 %}
 
     {"status": "422", "message": "{{ l.not_created }}"}
 
   {% else %}
 
-    {"status": "201", "message": "{{ l.created }}", "_id": "{{ tasks_insertion._id }}"}
+    {"status": "201", "message": "{{ l.created }}", "_id": "{{ tasks_insertion.document._id }}"}
 
   {% endif %}
 {% endif %}
